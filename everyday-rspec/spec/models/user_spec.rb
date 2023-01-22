@@ -29,10 +29,10 @@ RSpec.describe User, type: :model do
   # メールアドレスがなければ無効な状態であること
   it "is invalid without an email address" do
     User.create(
-      first_name: 'Joe',
+      first_name: 'Test',
       last_name: 'Tester',
       email: 'test@example.com',
-      password: 'dottle-nouveau-pavilion-tights-furze',
+      password: 'dottl-nouveau-pavilion-tights-furze',
     )
 
     user = User.new(
