@@ -29,10 +29,10 @@ RSpec.describe User, type: :model do
   # メールアドレスがなければ無効な状態であること
   it "is invalid without an email address" do
     User.create(
-      first_name: 'Joe',
+      first_name: 'Test',
       last_name: 'Tester',
       email: 'test@example.com',
-      password: 'dottle-nouveau-pavilion-tights-furze',
+      password: 'dottl-nouveau-pavilion-tights-furze',
     )
 
     user = User.new(
@@ -50,5 +50,13 @@ RSpec.describe User, type: :model do
   it "is invalid with a duplicate email address"
 
   # ユーザーのフルネームを文字列として返すこと
-  it "returns a user's full name as a string"
+  it "returns a user's full name as a string" do
+    user = User.new(
+      first_name: "John",
+      last_name: 'Doe',
+      email: 'johndoe@example.com'
+    )
+
+    expect(user.name).to eq "John Doe"
+  end
 end
