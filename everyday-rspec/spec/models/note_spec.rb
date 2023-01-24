@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+  # ファクトリで関連するデータを作成する
+  it "generates assocated data from a factory" do
+    note = FactoryBot.create(:note)
+    puts "This note's project is #{note.project.inspect}"
+    puts "This note's user is #{note.user.inspect}"
+  end
+
   before do
     @user = User.create(
       first_name: 'Jane',
