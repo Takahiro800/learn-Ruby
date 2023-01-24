@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
+  # たくさんのメモがついていること
+  it "can have many notes" do
+    project = FactoryBot.create(:project, :with_notes)
+    expect(project.notes.length).to eq 5
+  end
+
   # ユーザー単位では、　重複したプロジェクト名を許可しないこと
   it "does not allow duplicate project names per user" do
     user = User.create(
