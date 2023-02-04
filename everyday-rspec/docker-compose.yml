@@ -10,10 +10,20 @@ services:
       - 3001:3001
     depends_on:
       - db
+      - selenium_chrome
     tty: true
     # stdin_openとは標準入出力とエラー出力をコンテナに結びつける設定です。
     stdin_open: true
     platform: linux/amd64
+    environment:
+      - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+  selenium_chrome:
+    image: seleniarm/standalone-chromium:latest
+    ports:
+      - 4444:4444
+      - 5700:5700
+    volumes:
+      - ./tmp/downloads:/app/tmp/downloads
   db:
     image: mysql:5.7
     platform: linux/amd64
