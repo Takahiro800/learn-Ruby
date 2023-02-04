@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Projects", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   # ユーザーは新しいプロジェクトを作成する
   it 'creates a new project as a user' do
     user = FactoryBot.create(:user)
