@@ -65,5 +65,12 @@ RSpec.describe Note, type: :model do
         expect(Note.count).to eq 3
       end
     end
+
+    # 名前の取得をメモを作成したユーザーに委譲すること
+    it "delegate name to the user who created it" do
+      user = FactoryBot.create(:user, first_name: "Fake", last_name: "User")
+      note = Note.new(user: user)
+      expect(note.user_name).to eq "Fake User"
+    end
   end
 end
